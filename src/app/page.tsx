@@ -7,7 +7,9 @@ export default function Home() {
     <MainLayout>
       <div className="">
         <GraphComponent />
-        <DayComponent />
+        <div className="relative left-7">
+          <DayComponent />
+        </div>
       </div>
     </MainLayout>
   );

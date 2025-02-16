@@ -1,8 +1,12 @@
+import { useDisclosure } from "@nextui-org/react";
 import React from "react";
 import { FaBus, FaRegUser } from "react-icons/fa";
 import { MdSpaceDashboard } from "react-icons/md";
+import App from "@/components/BusSelectionComponent/Model/App";
 
 const SideBar: React.FC = () => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   return (
     <div>
       <aside className="w-[250px] h-screen flex flex-col px-5 pt-10 gap-10">
@@ -22,10 +26,14 @@ const SideBar: React.FC = () => {
           <nav>
             <ul className="flex flex-col gap-5">
               <li>
-                <p className="flex gap-4 items-center text-lg">
+                <button
+                  className="flex gap-4 items-center text-lg"
+                  onClick={onOpen}
+                >
                   <FaBus />
                   vehicle
-                </p>{" "}
+                </button>{" "}
+                <App isOpen={isOpen} onOpenChange={onOpenChange} />
               </li>
               <li>
                 <p className="flex gap-4 items-center text-lg">

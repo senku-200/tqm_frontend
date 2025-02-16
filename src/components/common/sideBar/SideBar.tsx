@@ -1,3 +1,4 @@
+"use client";
 import { useDisclosure } from "@nextui-org/react";
 import React from "react";
 import { FaBus, FaRegUser } from "react-icons/fa";

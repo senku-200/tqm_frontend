@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -26,15 +27,35 @@ ChartJS.register(
 );
 
 const TimeTQMChart = () => {
+  const [labels, setLabels] = useState<string[]>(["0", "2", "4", "6", "8", "10"]);
+  const [dataPoints, setDataPoints] = useState<number[]>([10, 30, 50, 40, 60, 80]);
+
+  useEffect(() => {
+    // Simulate live data updates every 2 seconds
+    const interval = setInterval(() => {
+      setLabels((prev) => {
+        const newLabel = (parseInt(prev[prev.length - 1]) + 2).toString(); // Increment time
+        return [...prev, newLabel].slice(-10); // Keep last 10 labels
+      });
+
+      setDataPoints((prev) => {
+        const newValue = Math.floor(Math.random() * 100); // Simulated data
+        return [...prev, newValue].slice(-10); // Keep last 10 values
+      });
+    }, 2000);
+
+    return () => clearInterval(interval); // Cleanup interval on unmount
+  }, []);
+
   const data = {
-    labels: ["0", "2", "4", "6", "8", "10"], // X-axis (Time in hours)
+    labels,
     datasets: [
       {
         label: "TQM",
-        data: [10, 30, 50, 40, 60, 80], // Y-axis (TQM values)
+        data: dataPoints,
         borderColor: "rgba(75, 192, 192, 1)",
         backgroundColor: "rgba(75, 192, 192, 0.2)",
-        tension: 0.4, // Smooth line
+        tension: 0.4,
         fill: true,
       },
     ],
@@ -44,18 +65,18 @@ const TimeTQMChart = () => {
     responsive: true,
     plugins: {
       legend: {
-        position: "top", 
+        position: "top",
       },
       title: {
         display: true,
-        text: "Time vs TQM Chart",
+        text: "Live Time vs TQM Chart",
       },
     },
     scales: {
       x: {
         title: {
           display: true,
-          text: "Time (hours)",
+          text: "Time (seconds)",
         },
       },
       y: {

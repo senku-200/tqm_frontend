@@ -1,6 +1,6 @@
 "use client";
 import MainComponent1 from "@/components/MainPageComponents/MainComponent1";
-import ThemeSwitch from "@/components/switch/ThemeSwitch";
+// import ThemeSwitch from "@/components/switch/ThemeSwitch";
 import React from "react";
 
 const Header: React.FC = () => {
@@ -9,7 +9,7 @@ const Header: React.FC = () => {
       <div className="">
         <MainComponent1 />
       </div>
-      <div className="flex gap-5 items-center">
+      {/* <div className="flex gap-5 items-center">
         <div className="">
           <ThemeSwitch />
         </div>
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </header>
   );
 };

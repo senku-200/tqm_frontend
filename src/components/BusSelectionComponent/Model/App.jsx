@@ -1,25 +1,28 @@
 "use client";
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, Input} from "@nextui-org/react";
-import {MailIcon} from './MailIcon.jsx';
-import {LockIcon} from './LockIcon.jsx';
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  Input,
+} from "@nextui-org/react";
+import { MailIcon } from "./MailIcon.jsx";
+import { LockIcon } from "./LockIcon.jsx";
 
-function App({isOpen,onOpenChange}) {
-
+function App({ isOpen, onOpenChange }) {
   return (
     <>
-      {/* <Button onPress={onOpen} color="primary">Open Modal</Button> */}
-      <Modal 
-        isOpen={isOpen} 
-        onOpenChange={onOpenChange}
-        placement="top-center"
-      >
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement="top-center">
         <ModalContent className="bg-black">
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Select Bus</ModalHeader>
+              <ModalHeader className="flex flex-col gap-1">
+                Select Bus
+              </ModalHeader>
               <ModalBody className="">
                 <Input
-                //   autoFocus
                   endContent={
                     <MailIcon className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
                   }
@@ -54,7 +57,7 @@ function App({isOpen,onOpenChange}) {
                   Close
                 </Button>
                 <Button color="primary" onPress={onClose}>
-                  Submit``
+                  Submit
                 </Button>
               </ModalFooter>
             </>
